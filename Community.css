@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+#career{
+    margin-bottom: 20px;
+    font-size:50px;
+    color:white
+}
+
+#mission{
+    color:white;
+    font-size:20px;
+
+}
+#title_community{
+    font-weight: 1000;
+    font-size:60px;
+}
+
+#title_desc{
+    font-weight:100;
+    font-size:20px;
+}
+.community{
+    width:100vw;
+}
+.community_header{
+    margin-bottom: 50px;
+}
+
+.main{
+
+    position: relative;
+    width:100vw;
+    height: 50vh;
+    background-color:#F3F7F7;
+}
+.main_title{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.job{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    position: relative;
+    font-size:40px;
+    font-weight:bold;
+    margin-top:35px;
+}
+.Internship{
+    width:100vw;
+    margin-top: 35px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.internship_details{
+    display: flex;
+    font-weight: 600;
+    justify-content:space-evenly;
+}
+
+
+.Internship_title{
+    font-size: 30px;
+    font-weight:500;
+}
+#break{
+    border-top: 3px solid;
+}
+.career_footer{
+    display: flex;
+    align-items:center;
+    justify-content:space-evenly;
+}
+
+.career_footer >img{
+    height: 60px;
+    width:100px
+}
+.summer_intern{
+    margin-bottom: 10px;
+    font-size:20px;
+    display: flex;
+    flex-direction:column;
+}
+
+.summer_intern > a{
+    text-decoration:none;
+    color:black;
+}
+
+.job_intern{
+    font-size:20px;
+    display: flex;
+    flex-direction:column;
+}
+
+.job_intern > a{
+    text-decoration:none;
+    color:black;
+}
+
+
+.community_header_color{
+    background-color: #00BDAC;
+    padding: 50px 20px 70px 20px;
+}

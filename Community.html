@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Community.css" />
+    <title>Community Page</title>
+</head>
+<body>
+    <div class="community">
+       <div class="community_header">
+        <div class="community_header_color">
+            <h1 id="career">Careers</h1>
+            <span id="mission">OUR MISSION</span>
+        </div>
+        <h1 id="title_community">Accelerate the World's Innovation</h1>
+        <span id="title_desc">
+            At TechnoColabs, people are the core of our mission.
+            We’re obsessed about the happiness and success of our customers, clients and – above all – our team. Everyday, we strive to empower and support our teammates to help them realize their full potential.
+        </span>
+       </div>
+       <div class="main">
+           <div class="main_title"><span class="job">Current Job Openings</span></div>
+                <div class="Internship" >
+                    <div class="internship_details">
+                            <span class="Internship_title">Summer Internship</span>
+                            <span class="Internship_title">Job Opportunity</span>
+                    </div>
+                </div>
+            <div>
+                <div class="Internship" id="show">
+                    
+
+                </div>
+            </div>
+       </div>
+       <hr id="break">
+       <div class="career_footer">
+              <img src="./images/logo-atlassian-a.png" />
+              <img src="./images/logo-bookingcom.png" />
+              <img src="./images/logo-icon-dropbox.png" />
+              <img src="./images/logo-icon-goldman-sachs.png" />
+              <img src="./images/logo-icon-linkedin.png" />
+              <img src="./images/logo-icon-stripe.png" />
+              <img src="./images/logo-icon-vmware.png"/>
+       </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function fetchData(){
+            fetch("http://localhost:5500/community")
+            .then(response=>{
+                if(!response.ok){
+                    throw Error("Error");
+                }
+                return response.json();
+            })
+            .then(data=>{
+                console.log(data);
+                const html=data.map(user=>{
+                    return `
+                    <div class="internship_details">
+                        <div class="summer_intern">
+                            <a href="Intern.html" >Product Manager Intern (3 to 6 months)</a>
+                            <a href="Intern.html" >Bangalore, Karnataka | Remote within India</a>
+                        </div>
+                        
+                        <div class="job_intern">
+                                <a href="Job.html">Product Manager Job</a>
+                                <a href="Job.html" >Bangalore, Karnataka | Remote within India</a>
+                        </div>
+                    </div>
+                    `;
+                }).join("");
+                console.log(html);
+                document.querySelector("#show").insertAdjacentHTML("afterbegin",html);
+            })
+            .catch(error=>{
+                console.log("error");
+            });
+        }
+        fetchData();
+</script>
