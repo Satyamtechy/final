@@ -15,6 +15,7 @@ const User=require("../models/schema");
 const Remainder=require("../models/Remainder")
 const Demo  = require("../models/Demo")
 const wishlist = require("../models/wishlist");
+const Queries = require("../models/Query");
 app.use(express.json());
 var cors = require('cors')
 app.use(cors())
@@ -490,7 +491,63 @@ app.post("/wish",async(req, res)=>{
   console.log('wish inserted')
 })
 
+//Raj mishra
 
+const subscriberSchema ={
+  emailid: String
+}
+
+const Sub = mongoose.model("sub", subscriberSchema, 'subscribers');
+
+app.get("/commingsoon", function(req, res) {
+  res.sendFile(__dirname + "specialty-comming-soon.html");
+})
+
+
+app.post("/commingsoon", async(req, res)=>{
+  let newSub = new Sub({
+      emailid: req.body.emailid
+  });
+  await newSub.save();
+  console.log('feed')
+  res.redirect("/commingsoon");
+})
+
+
+//Prakhar
+
+app.post("/query", async(req, res)=>{
+  const newQuery = new Queries(req.body);
+  await newQuery.save();
+  console.log("saved")
+
+  var transporterQuery = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: ' mridulbagri25@gmail.com',
+      pass: 'Mridul@20'
+    }
+  });
+  var mess = function(req, res){
+    return  "email: "+req.body.email + "\nname: " + req.body.name + "\nmessage: " +req.body.message;
+  };
+  var m = mess(req, res);
+  var mailOptionsQuery = {
+    from: 'mridulbagri25@gmail.com',
+    to: req.body.email,
+    subject: 'Message form user',
+    text: m
+  };
+
+  transporterQuery.sendMail(mailOptionsQuery, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+  return res.redirect('page-contact.html')
+})
 
 
   app.listen(PORT, () => {
